@@ -1,0 +1,17 @@
+[alias]
+	aa = add --all
+	cm = commit
+	cma = commit -a
+	ca = commit --amend
+	car = commit --amend --no-edit
+	df = diff --word-diff --color-words
+	dc = diff --word-diff --cached --color-words
+	sl = log --oneline --decorate --graph -20
+	sla = log --oneline --decorate --graph --all -20
+	uncommit = reset --soft HEAD^
+	rs = reset
+
+	# Function to add new alias and commit changes to .gitconfig
+	al = "!f() { git config --global alias.$1 $2; cd; git reset; git add .gitconfig; git commit -m 'Add alias to .gitconfig: '$1' \n\n '$1' = '$2; cd -; }; f"
+	co = checkout
+	br = branch
