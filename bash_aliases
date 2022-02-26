@@ -7,6 +7,7 @@ alias clist="conda list"
 alias cc="conda create -n"
 alias cr="conda env remove -n"
 alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
+alias d="cd ~/Documents/ && ls"
 
 # Git shorthand
 # No arguments: `git status`
@@ -19,8 +20,16 @@ g() {
   fi
 }
 
-# General
+# VirtualBoxManager
+vm() {
+  if [[ $# > 0 ]]; then
+    VBoxManage $@
+  else
+    VBoxManage list vms
+  fi
+}
 
+# General
 function mcd () {
     mkdir $1;
     cd $1;
@@ -29,9 +38,4 @@ function mcd () {
 function tree () {
     clear;
     cmd //c tree $1 //f;
-}
-
-function d () {
-    cd ~/Documents/;
-    ls;
 }
