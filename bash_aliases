@@ -9,6 +9,9 @@ alias cr="conda env remove -n"
 alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
 alias d="cd ~/Documents/ && ls"
 
+# (re)start vscode in the current workspace folder
+alias w="code -r ."
+
 # Git shorthand
 # No arguments: `git status`
 # With arguments: acts like `git`
