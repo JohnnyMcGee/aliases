@@ -1,4 +1,8 @@
 # ALIASES AND FUNCTIONS
+
+alias cl="clear"
+alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
+
 # Conda shorthand
 alias ce="conda info --envs"
 alias ca="conda activate"
