@@ -12,6 +12,6 @@
 	f = fetch
 	p = push
 	pl = !git pull && git log --oneline --decorate --graph --all -10
-	rs = !git reset && git status
+	rs = reset
 	sl = log --oneline --decorate --graph -20
 	sla = log --oneline --decorate --graph --all -20
