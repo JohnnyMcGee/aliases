@@ -2,6 +2,9 @@
 
 alias cl="clear"
 alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
+alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
+alias d="cd ~/Documents/ && ls"
+alias w="code -r ."
 
 # Conda shorthand
 alias ce="conda info --envs"
@@ -10,11 +13,15 @@ alias cda="conda deactivate"
 alias clist="conda list"
 alias cc="conda create -n"
 alias cr="conda env remove -n"
-alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
-alias d="cd ~/Documents/ && ls"
 
-# (re)start vscode in the current workspace folder
-alias w="code -r ."
+# Docker shorthand
+alias sd="sudo docker"
+alias sdi="sudo docker image"
+alias sdis="sudo docker images"
+alias sdc="sudo docker container"
+alias sdbld="sudo docker build -t"
+alias sdrun="sudo docker run -t -d"
+alias sdex="sudo docker exec -it"
 
 # Git shorthand
 # No arguments: `git status`
