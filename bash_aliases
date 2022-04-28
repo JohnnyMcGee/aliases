@@ -1,3 +1,4 @@
+
 # ALIASES AND FUNCTIONS
 
 alias cl="clear"
