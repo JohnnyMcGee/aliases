@@ -6,6 +6,8 @@ alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
 alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
 alias d="cd ~/Documents/ && ls"
 alias w="code -r ."
+alias src="source ~/.bashrc ."
+alias miniprompt="PS1='$ '"
 
 # Conda shorthand
 alias ce="conda info --envs"
