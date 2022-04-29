@@ -8,6 +8,7 @@ alias d="cd ~/Documents/ && ls"
 alias w="code -r ."
 alias src="source ~/.bashrc ."
 alias miniprompt="PS1='$ '"
+alias df="df -h"
 
 # Conda shorthand
 alias ce="conda info --envs"
