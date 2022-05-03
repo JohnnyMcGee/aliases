@@ -57,3 +57,17 @@ function tree () {
     clear;
     cmd //c tree $1 //f;
 }
+function cln () {
+	git clone "https://github.com/JohnnyMcGee/${1}"
+}
+
+# search network listeners for given string
+# slightly different options for windows (Msys) version
+function netgrep () {
+	if [ "Msys" = "$(uname -o)" ];
+		then
+		netstat -ano | findstr LISTENING | findstr $@
+		
+		else netstat -anolp | grep $@
+	fi
+}
