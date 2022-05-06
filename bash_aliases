@@ -4,7 +4,7 @@
 alias cl="clear"
 alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
 alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
-alias d="cd ~/Documents/ && ls"
+d () { cd "$HOME/Documents/$1" && ls; }
 alias w="code -r ."
 alias src="source ~/.bashrc ."
 alias miniprompt="PS1='$ '"
@@ -26,6 +26,7 @@ alias sdc="sudo docker container"
 alias sdbld="sudo docker build -t"
 alias sdrun="sudo docker run -t -d"
 alias sdex="sudo docker exec -it"
+sdpsh() { sudo docker push "johnnymcgee/$1"; }
 
 # Git shorthand
 # No arguments: `git status`
