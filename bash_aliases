@@ -27,6 +27,8 @@ alias sdbld="sudo docker build -t"
 alias sdrun="sudo docker run -t -d"
 alias sdex="sudo docker exec -it"
 sdpsh() { sudo docker push "johnnymcgee/$1"; }
+alias sdpl="sudo docker pull"
+sdplj() { sudo docker pull "johnnymcgee/$1"; }
 
 # Git shorthand
 # No arguments: `git status`
