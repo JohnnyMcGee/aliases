@@ -32,6 +32,14 @@ alias sdpl="sudo docker pull"
 sdplj() { sudo docker pull "johnnymcgee/$1"; }
 alias sdcomp="sudo docker compose"
 
+# Google Drive Shorthand
+
+alias pg="sudo docker exec -it search pirate-get"
+alias rt="sudo docker exec -it download rtorrent -d /root/files"
+alias gd="sudo docker exec -it upload gdrive"
+alias torrents="sudo docker exec -it download ls -Alh"
+alias files="sudo docker exec -it upload ls -Alh"
+  
 # Git shorthand
 # No arguments: `git status`
 # With arguments: acts like `git`
