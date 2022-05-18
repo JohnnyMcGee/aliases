@@ -9,6 +9,7 @@ alias w="code -r ."
 alias src="source ~/.bashrc ."
 alias miniprompt="PS1='$ '"
 alias df="df -h"
+alias locip="ip a | grep eth0"
 
 # Conda shorthand
 alias ce="conda info --envs"
@@ -29,6 +30,7 @@ alias sdex="sudo docker exec -it"
 sdpsh() { sudo docker push "johnnymcgee/$1"; }
 alias sdpl="sudo docker pull"
 sdplj() { sudo docker pull "johnnymcgee/$1"; }
+alias sdcomp="sudo docker compose"
 
 # Git shorthand
 # No arguments: `git status`
