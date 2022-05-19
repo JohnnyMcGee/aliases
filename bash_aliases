@@ -39,6 +39,10 @@ alias rt="sudo docker exec -it download rtorrent -d /root/files"
 alias gd="sudo docker exec -it upload gdrive"
 alias torrents="sudo docker exec -it download ls -Alh"
 alias files="sudo docker exec -it upload ls -Alh"
+alias files-up="sudo docker exec -it upload ./upload.sh"
+alias files-cl="sudo docker exec -it upload ./clear.sh"
+alias torrents-down="sudo docker exec -it download ./download.sh"
+alias torrents-cl="sudo docker exec -it download ./clear.sh"
   
 # Git shorthand
 # No arguments: `git status`
