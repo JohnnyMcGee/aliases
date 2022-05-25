@@ -31,6 +31,7 @@ sdpsh() { sudo docker push "johnnymcgee/$1"; }
 alias sdpl="sudo docker pull"
 sdplj() { sudo docker pull "johnnymcgee/$1"; }
 alias sdcomp="sudo docker compose"
+alias sdclear="sudo docker container rm -f $(sudo docker container ls -aq) && sudo docker image rm -f $(sudo docker image ls -q)"
 
 # Google Drive Shorthand
 
