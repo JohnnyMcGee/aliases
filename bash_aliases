@@ -7,7 +7,7 @@ alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
 d () { cd "$HOME/Documents/$1" && ls; }
 alias w="code -r ."
 alias src="source ~/.bashrc ."
-alias miniprompt="PS1='$ '"
+alias mini="PS1='$ '"
 alias df="df -h"
 alias locip="ip a | grep eth0"
 
