@@ -33,8 +33,11 @@ sdplj() { sudo docker pull "johnnymcgee/$1"; }
 alias sdcomp="sudo docker compose"
 alias sdclear="sudo docker container rm -f $(sudo docker container ls -aq) && sudo docker image rm -f $(sudo docker image ls -q)"
 
-# Google Drive Shorthand
+# Flutter tool
+alias fclnup="flutter clean && flutter pub get && flutter pub upgrade";
+alias frun="flutter run -v";
 
+# Google Drive Shorthand
 alias pg="sudo docker exec -it search pirate-get"
 alias rt="sudo docker exec -it download rtorrent -d /root/files"
 alias gd="sudo docker exec -it upload gdrive"
