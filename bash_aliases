@@ -1,10 +1,9 @@
-
 # ALIASES AND FUNCTIONS
 
 alias cl="clear"
 alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
 alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
-d () { cd "$HOME/Documents/$1" && ls; }
+d() { cd "$HOME/Documents/$1" && ls; }
 alias w="code -r ."
 alias src="source ~/.bashrc ."
 alias mini="PS1='$ '"
@@ -34,8 +33,9 @@ alias sdcomp="sudo docker compose"
 alias sdclear="sudo docker container rm -f $(sudo docker container ls -aq) && sudo docker image rm -f $(sudo docker image ls -q)"
 
 # Flutter tool
-alias fclnup="flutter clean && flutter pub get && flutter pub upgrade";
-alias frun="flutter run -v";
+alias fclnup="flutter clean && flutter pub get && flutter pub upgrade"
+alias frun="flutter run -v"
+alias ftst="flutter test"
 
 # Google Drive Shorthand
 alias pg="sudo docker exec -it search pirate-get"
@@ -47,7 +47,7 @@ alias files-up="sudo docker exec -it upload ./upload.sh"
 alias files-cl="sudo docker exec -it upload ./clear.sh"
 alias torrents-down="sudo docker exec -it download ./download.sh"
 alias torrents-cl="sudo docker exec -it download ./clear.sh"
-  
+
 # Git shorthand
 # No arguments: `git status`
 # With arguments: acts like `git`
@@ -69,31 +69,31 @@ vm() {
 }
 
 # General
-function mcd () {
-    mkdir $1;
-    cd $1;
+function mcd() {
+  mkdir $1
+  cd $1
 }
 
-function tree () {
-    clear;
-    cmd //c tree $1 //f;
+function tree() {
+  clear
+  cmd //c tree $1 //f
 }
-function cln () {
-	git clone "https://github.com/JohnnyMcGee/${1}"
+function cln() {
+  git clone "https://github.com/JohnnyMcGee/${1}"
 }
 
 # clone over ssh
-function scln () {
-	git clone "git@github.com:JohnnyMcGee/${1}.git"
+function scln() {
+  git clone "git@github.com:JohnnyMcGee/${1}.git"
 }
 
 # search network listeners for given string
 # slightly different options for windows (Msys) version
-function netgrep () {
-	if [ "Msys" = "$(uname -o)" ];
-		then
-		netstat -ano | findstr LISTENING | findstr $@
-		
-		else netstat -anolp | grep $@
-	fi
+function netgrep() {
+  if [ "Msys" = "$(uname -o)" ]; then
+    netstat -ano | findstr LISTENING | findstr $@
+
+  else
+    netstat -anolp | grep $@
+  fi
 }
