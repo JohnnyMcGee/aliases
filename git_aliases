@@ -17,3 +17,4 @@
 	sla = log --oneline --decorate --graph --all -20
 	slam = log --oneline --decorate --graph --all
 	mpm = !git checkout main && git merge - && git push
+	rbc = !git add --all && git rebase --continue
