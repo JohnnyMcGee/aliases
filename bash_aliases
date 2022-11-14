@@ -9,6 +9,8 @@ alias src="source ~/.bashrc ."
 alias mini="PS1='$ '"
 alias df="df -h"
 alias locip="ip a | grep eth0"
+# Workaround for Storybook compatibility issues
+alias oslp="export NODE_OPTIONS=--openssl-legacy-provider"
 
 # Conda shorthand
 alias ce="conda info --envs"
@@ -36,6 +38,10 @@ alias sdclear="sudo docker container rm -f $(sudo docker container ls -aq) && su
 alias fclnup="flutter clean && flutter pub get && flutter pub upgrade"
 alias frun="flutter run -v"
 alias ftst="flutter test"
+alias fbr-watch="flutter pub run build_runner watch"
+alias fbr-build="flutter pub run build_runner build"
+
+alias fa-bb="adb shell setprop debug.firebase.analytics.app com.juliankohann.bubblebrawl"
 
 # Google Drive Shorthand
 alias pg="sudo docker exec -it search pirate-get"
