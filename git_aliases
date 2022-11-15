@@ -17,6 +17,8 @@
 	sla = log --oneline --decorate --graph --all -20
 	slam = log --oneline --decorate --graph --all
 	mpm = !git checkout main && git merge - && git push
+	rb = rebase
+	rbi = rebase -i
 	rbc = !git add --all && git rebase --continue
 	rao = remote add origin
 	conn = !git branch -m main && git push -u origin main
