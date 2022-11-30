@@ -65,6 +65,11 @@ g() {
   fi
 }
 
+# Github shorthand
+
+alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
+alias prmd="gh pr merge -rd && git fetch && g sla"
+
 # VirtualBoxManager
 vm() {
   if [[ $# > 0 ]]; then

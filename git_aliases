@@ -12,6 +12,7 @@
 	f = fetch
 	p = push
 	psuo = push --set-upstream origin
+	psuoc = !git push --set-upstream origin $(git branch --show-current)
 	pdel = push origin --delete
 	pl = !git pull && git log --oneline --decorate --graph --all -10
 	rs = reset
