@@ -3,6 +3,7 @@
 	aliases = config --get-regexp alias
 	br = branch
 	ca = commit --amend
+	caa = commit -a --amend -C HEAD
 	car = commit --amend --no-edit
 	cm = !git commit && git log --oneline --decorate --graph --all -10
 	cma = !git commit -a && git log --oneline --decorate --graph --all -10
@@ -25,3 +26,5 @@
 	rbc = !git add --all && git rebase --continue
 	rao = remote add origin
 	conn = !git branch -m main && git push -u origin main
+	nb = "!f () { git checkout -b jbm-$1; }; f"
+	
