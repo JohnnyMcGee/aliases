@@ -9,6 +9,7 @@ alias src="source ~/.bashrc ."
 alias mini="PS1='$ '"
 alias df="df -h"
 alias locip="ip a | grep eth0"
+alias cdc="cd /c/code"
 # Workaround for Storybook compatibility issues
 alias oslp="export NODE_OPTIONS=--openssl-legacy-provider"
 
@@ -69,6 +70,11 @@ g() {
 
 alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
+function pdprmd() {
+  git psuoc
+  gh pr create -B dev -a @mea -b '' -t $1
+  gh pr merge -rd && git fetch && g sla
+}
 
 # VirtualBoxManager
 vm() {
