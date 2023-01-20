@@ -7,6 +7,7 @@
 	car = commit --amend --no-edit
 	cm = !git commit && git log --oneline --decorate --graph --all -10
 	cma = !git commit -a && git log --oneline --decorate --graph --all -10
+	cmm = commit -a -m
 	co = checkout
 	dc = diff --word-diff --cached --color-words
 	df = diff --word-diff --color-words
