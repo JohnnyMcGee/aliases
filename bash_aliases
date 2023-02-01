@@ -14,6 +14,7 @@ alias nukenpm="rm -rv node_modules && npm i"
 alias difff="diff --color --suppress-common-lines --suppress-blank-empty -y"
 # Workaround for Storybook compatibility issues
 alias oslp="export NODE_OPTIONS=--openssl-legacy-provider"
+alias sb="npm run storybook"
 
 # Conda shorthand
 alias ce="conda info --envs"
@@ -77,6 +78,9 @@ function pdprmd() {
   gh pr create -B dev -a @me -b '' -t "$1"
   gh pr merge -rd && git fetch && g sla
 }
+alias ghic="gh issue close";
+alias ghil="gh issue list";
+alias ghiv="gh issue view";
 
 # VirtualBoxManager
 vm() {
@@ -116,3 +120,21 @@ function netgrep() {
     netstat -anolp | grep $@
   fi
 }
+
+# NPM Shorthand
+# Updating EarthBreeze internal dependencies
+function ebi() {
+  npm install "github:Earth-Breeze/${1}"
+}
+
+function ebid() {
+  npm install "github:Earth-Breeze/${1}#dev"
+}
+
+# Chromatic build
+function chr() {
+  npx chromatic "--project-token=${1}"
+}
+
+alias npmid="npm install --save-dev"
+alias npmt="npm run test"
