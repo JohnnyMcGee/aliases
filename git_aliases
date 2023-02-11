@@ -8,6 +8,8 @@
 	cm = !git commit && git log --oneline --decorate --graph --all -10
 	cma = !git commit -a && git log --oneline --decorate --graph --all -10
 	cmm = commit -a -m
+	cap = !git commit -a --amend -C HEAD && git push
+	capf = !git commit -a --amend -C HEAD && git push -f
 	co = checkout
 	dc = diff --word-diff --cached --color-words
 	df = diff --word-diff --color-words

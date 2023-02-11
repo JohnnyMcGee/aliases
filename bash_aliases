@@ -71,6 +71,7 @@ g() {
 
 # Github shorthand
 
+alias action="gh run view -w"
 alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
 function pdprmd() {
@@ -78,9 +79,17 @@ function pdprmd() {
   gh pr create -B dev -a @me -b '' -t "$1"
   gh pr merge -rd && git fetch && g sla
 }
+function pdprmd() {
+  git psuoc
+  gh pr create -B dev -a @me -b '' -t "$1"
+  gh pr merge -rd && git fetch && g sla
+}
+
+
 alias ghic="gh issue close";
 alias ghil="gh issue list";
 alias ghiv="gh issue view";
+alias ghprlsm="gh pr list -s merged"
 
 # VirtualBoxManager
 vm() {
