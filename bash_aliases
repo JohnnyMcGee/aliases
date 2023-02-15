@@ -4,7 +4,7 @@ alias cl="clear"
 alias enable-touchpad="xinput enable 'SynPS/2 Synaptics TouchPad'"
 alias bfg="java -jar C:/BFG/bfg-1.14.0.jar"
 d() { cd "$HOME/Documents/$1" && ls; }
-alias w="code -r ."
+alias w="code -r . &"
 alias src="source ~/.bashrc ."
 alias mini="PS1='$ '"
 alias df="df -h"
