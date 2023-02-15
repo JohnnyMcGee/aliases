@@ -147,6 +147,8 @@ function chr() {
 
 alias npmid="npm install --save-dev"
 alias npmt="npm run test"
+alias npmtr="npm run test run"
 
 # Shopify Shorthand
 alias shtc="shopify theme check --fail-level error"
+alias shtd="shopify theme dev"
