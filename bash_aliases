@@ -85,10 +85,9 @@ function pdprmd() {
   gh pr merge -rd && git fetch && g sla
 }
 
-
-alias ghic="gh issue close";
-alias ghil="gh issue list";
-alias ghiv="gh issue view";
+alias ghic="gh issue close"
+alias ghil="gh issue list"
+alias ghiv="gh issue view"
 alias ghprlsm="gh pr list -s merged"
 
 # VirtualBoxManager
@@ -152,3 +151,5 @@ alias npmtr="npm run test run"
 # Shopify Shorthand
 alias shtc="shopify theme check --fail-level error"
 alias shtd="shopify theme dev"
+alias shtdd="shopify theme dev -s earth-breeze-development"
+alias shtdp="shopify theme dev -s tryearthbreeze"
