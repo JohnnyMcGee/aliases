@@ -69,6 +69,8 @@ g() {
   fi
 }
 
+alias mybr="git branch | grep -i jbm && git branch -r | grep -i jbm"
+
 # Github shorthand
 
 alias action="gh run view -w"
