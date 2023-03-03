@@ -82,10 +82,22 @@ function pdprmd() {
   gh pr create -B dev -a @me -b '' -t "$1"
   gh pr merge -rd && git fetch && g sla
 }
-function pdprmd() {
-  git psuoc
-  gh pr create -B dev -a @me -b '' -t "$1"
-  gh pr merge -rd && git fetch && g sla
+function pmprm() {
+  if [[ $1 == "" ]]; then
+    echo "Must provide a title for the PR"
+  else
+    git checkout dev
+    git push -f
+    gh pr create -B main -b "" -a @me -t "$1"
+    gh pr merge -r
+    git fetch
+    git checkout main
+    git pull
+    git checkout dev
+    git rebase main
+    git push -f
+    git sla
+  fi
 }
 
 alias ghic="gh issue close"
