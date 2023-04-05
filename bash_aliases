@@ -9,7 +9,8 @@ alias src="source ~/.bashrc ."
 alias mini="PS1='$ '"
 alias df="df -h"
 alias locip="ip a | grep eth0"
-alias cdc="cd /c/code"
+alias cdc="cd /cygdrive/c/code"
+alias cdeb="cd /cygdrive/c/code/earthbreeze"
 alias nukenpm="rm -rv node_modules && npm i"
 alias difff="diff --color --suppress-common-lines --suppress-blank-empty -y"
 # Workaround for Storybook compatibility issues
@@ -169,3 +170,7 @@ alias shtc="shopify theme check --fail-level error"
 alias shtd="shopify theme dev"
 alias shtdd="shopify theme dev -s earth-breeze-development"
 alias shtdp="shopify theme dev -s tryearthbreeze"
+
+# Firebase Shorthand
+alias fes="firebase emulators:start"
+alias fu="firebase use"
