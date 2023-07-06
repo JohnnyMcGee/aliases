@@ -19,6 +19,7 @@
 	psuoc = !git push --set-upstream origin $(git branch --show-current)
 	pdel = push origin --delete
 	pl = !git pull && git log --oneline --decorate --graph --all -10
+	plm = !git checkout main && git pull && git log --oneline --decorate --graph --all -10
 	rs = reset
 	sl = log --oneline --decorate --graph -20
 	sla = log --oneline --decorate --graph --all -20

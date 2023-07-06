@@ -74,6 +74,7 @@ alias mybr="git branch | grep -i jbm && git branch -r | grep -i jbm"
 
 # Github shorthand
 
+alias ghrevs="gh pr list --json 'number,title,reviews'"
 alias action="gh run view -w"
 alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
@@ -174,3 +175,4 @@ alias shtdp="shopify theme dev -s tryearthbreeze"
 # Firebase Shorthand
 alias fes="firebase emulators:start"
 alias fu="firebase use"
+alias ffcg="firebase functions:config:get"
