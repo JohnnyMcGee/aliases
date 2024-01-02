@@ -178,3 +178,8 @@ alias shtdp="shopify theme dev -s tryearthbreeze"
 alias fes="firebase emulators:start"
 alias fu="firebase use"
 alias ffcg="firebase functions:config:get"
+
+# Global Variables
+export EBD="earth-breeze-development"
+export EBH="earth-breeze-hydrogen"
+export TEB="tryearthbreeze"
