@@ -165,6 +165,7 @@ function chr() {
 alias npmid="npm install --save-dev"
 alias npmt="npm run test"
 alias npmtr="npm run test run"
+alias npmrd="npm run dev"
 alias pj="code package.json"
 
 # Shopify Shorthand
