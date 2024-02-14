@@ -167,6 +167,8 @@ alias npmt="npm run test"
 alias npmtr="npm run test run"
 alias npmrd="npm run dev"
 alias pj="code package.json"
+alias npmlnt='npm run lint'
+alias npmtsc='npm run type-check'
 
 # Shopify Shorthand
 alias shtc="shopify theme check --fail-level error"
@@ -178,8 +180,11 @@ alias shtdp="shopify theme dev -s tryearthbreeze"
 alias fes="firebase emulators:start"
 alias fu="firebase use"
 alias ffcg="firebase functions:config:get"
+<<<<<<< Updated upstream
 
 # Global Variables
 export EBD="earth-breeze-development"
 export EBH="earth-breeze-hydrogen"
 export TEB="tryearthbreeze"
+=======
+>>>>>>> Stashed changes
