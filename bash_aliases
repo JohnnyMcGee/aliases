@@ -62,6 +62,7 @@ alias torrents-cl="sudo docker exec -it download ./clear.sh"
 # Git shorthand
 # No arguments: `git status`
 # With arguments: acts like `git`
+unalias g
 g() {
   if [[ $# > 0 ]]; then
     git $@
@@ -180,11 +181,8 @@ alias shtdp="shopify theme dev -s tryearthbreeze"
 alias fes="firebase emulators:start"
 alias fu="firebase use"
 alias ffcg="firebase functions:config:get"
-<<<<<<< Updated upstream
 
 # Global Variables
 export EBD="earth-breeze-development"
 export EBH="earth-breeze-hydrogen"
 export TEB="tryearthbreeze"
-=======
->>>>>>> Stashed changes
