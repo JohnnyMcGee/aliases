@@ -34,3 +34,4 @@
 	wipe = reset --hard HEAD
 	rmc = rm --cached
 	s = status
+	cb = branch --show-current
