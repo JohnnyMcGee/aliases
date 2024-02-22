@@ -163,6 +163,7 @@ function chr() {
   npx chromatic "--project-token=${1}"
 }
 
+alias npmi="npm install"
 alias npmid="npm install --save-dev"
 alias npmt="npm run test"
 alias npmtr="npm run test run"
@@ -176,6 +177,8 @@ alias shtc="shopify theme check --fail-level error"
 alias shtd="shopify theme dev"
 alias shtdd="shopify theme dev -s earth-breeze-development"
 alias shtdp="shopify theme dev -s tryearthbreeze"
+# Pulls gempages assets before deploying to an unpublished theme
+alias shgpd="shopify theme pull --store tryearthbreeze.myshopify.com -t us-store-theme/main --only \"config/*\" --only \"templates/*.gem-*\" --only \"assets/gem-*\" && shopify theme push -u"
 
 # Firebase Shorthand
 alias fes="firebase emulators:start"
