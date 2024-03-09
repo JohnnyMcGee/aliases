@@ -189,3 +189,6 @@ alias ffcg="firebase functions:config:get"
 export EBD="earth-breeze-development"
 export EBH="earth-breeze-hydrogen"
 export TEB="tryearthbreeze"
+
+# Projects
+alias qcf="cd $CODEPATH/fss/quantum_cube_flutter && code ."
