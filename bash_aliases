@@ -179,6 +179,8 @@ alias shtdd="shopify theme dev -s earth-breeze-development"
 alias shtdp="shopify theme dev -s tryearthbreeze"
 # Pulls gempages assets before deploying to an unpublished theme
 alias shgpd="shopify theme pull --store tryearthbreeze.myshopify.com -t us-store-theme/main --only \"config/*\" --only \"templates/*.gem-*\" --only \"assets/gem-*\" && shopify theme push -u"
+alias shgenex="shopify app generate extension"
+alias shad="shopify app deploy"
 
 # Firebase Shorthand
 alias fes="firebase emulators:start"
@@ -192,3 +194,12 @@ export TEB="tryearthbreeze"
 
 # Projects
 alias qcf="cd $CODEPATH/fss/quantum_cube_flutter && code ."
+alias al="cd $CODEPATH/aliases && code ."
+alias st="cd $CODEPATH/eb/shopify-theme && code ."
+alias std="cd $CODEPATH/eb/shopify-theme && code . && npm run dev"
+alias sh="cd $CODEPATH/eb/shopify-hydrogen && code ."
+alias shd="cd $CODEPATH/eb/shopify-hydrogen && code . && npm run dev"
+alias ust="cd $CODEPATH/eb/us-store-theme && code ."
+alias ustd="cd $CODEPATH/eb/us-store-theme && code . && shopify theme dev"
+alias erp="cd $CODEPATH/eb/eb-remix-poc && code ."
+alias erpd="cd $CODEPATH/eb/eb-remix-poc && code . && npm run dev"
