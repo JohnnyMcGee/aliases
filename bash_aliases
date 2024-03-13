@@ -168,6 +168,7 @@ alias npmid="npm install --save-dev"
 alias npmt="npm run test"
 alias npmtr="npm run test run"
 alias npmrd="npm run dev"
+alias npmird="npm install && npm run dev"
 alias pj="code package.json"
 alias npmlnt='npm run lint'
 alias npmtsc='npm run type-check'
