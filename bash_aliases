@@ -73,6 +73,13 @@ g() {
 
 alias mybr="git branch | grep -i jbm && git branch -r | grep -i jbm"
 
+unalias copl
+copl() {
+  git checkout $1
+  git pull
+  git checkout -
+}
+
 # Github shorthand
 
 alias ghrevs="gh pr list --json 'number,title,reviews'"
@@ -80,6 +87,19 @@ alias action="gh run view -w"
 alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
 alias prmm="git checkout dev && gh pr merge -rd && git fetch && git checkout main && git pull && git checkout dev && git rebase main && git push -f && git sla"
+
+# create a PR with an enhancement label, assign to me, and open in browser
+unalias prce
+prce() {
+  gh pr create -a @me -l enhancement "$@" && gh pr view -w
+}
+
+# create a PR with a bug label, assign to me, and open in browser
+unalias prcb
+prcb() {
+  gh pr create -a @me -l bug "$@" && gh pr view -w
+}
+
 function pdprmd() {
   git psuoc
   gh pr create -B dev -a @me -b '' -t "$1"
