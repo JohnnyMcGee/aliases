@@ -35,3 +35,5 @@
 	rmc = rm --cached
 	s = status
 	cb = branch --show-current
+	st = subtree
+	sm = submodule
