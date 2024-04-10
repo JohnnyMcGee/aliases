@@ -202,6 +202,17 @@ alias shtdp="shopify theme dev -s tryearthbreeze"
 alias shgpd="shopify theme pull --store tryearthbreeze.myshopify.com -t us-store-theme/main --only \"config/*\" --only \"templates/*.gem-*\" --only \"assets/gem-*\" && shopify theme push -u"
 alias shgenex="shopify app generate extension"
 alias shad="shopify app deploy"
+# Shopify Hydrogen commands
+alias h="npx shopify hydrogen"
+alias hep="npx shopify hydrogen env pull -f"
+alias hnitro="npx shopify hydrogen login -s earth-breeze-nitrogen && npx shopify hydrogen link -f --storefront 'Earth Breeze Development' && npx shopify hydrogen env pull -f"
+alias hhydro="npx shopify hydrogen login -s earth-breeze-hydrogen && npx shopify hydrogen link -f --storefront 'Earth Breeze Hydrogen' && npx shopify hydrogen env pull -f"
+alias hlnk="npx shopify hydrogen link -f"
+
+# Decode and format a base64 json string
+function decode() {
+  echo -n "$1" | base64 --decode | jq .
+}
 
 # Firebase Shorthand
 alias fes="firebase emulators:start"
@@ -225,3 +236,4 @@ alias ustd="cd $CODEPATH/eb/us-store-theme && code . && shopify theme dev"
 alias erp="cd $CODEPATH/eb/eb-remix-poc && code ."
 alias erpd="cd $CODEPATH/eb/eb-remix-poc && code . && npm run dev"
 alias rty="cd $CODEPATH/eb/recharge-thankyou && code ."
+alias sha="cd $CODEPATH/eb/shared && code ."
