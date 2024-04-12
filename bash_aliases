@@ -214,6 +214,11 @@ function decode() {
   echo -n "$1" | base64 --decode | jq .
 }
 
+# Encode a JSON string to base64
+function encode() {
+  echo -n "$1" | jq -c . | base64
+}
+
 # Firebase Shorthand
 alias fes="firebase emulators:start"
 alias fu="firebase use"
