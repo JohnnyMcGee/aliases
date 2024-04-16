@@ -38,3 +38,5 @@
 	cb = branch --show-current
 	st = subtree
 	sm = submodule
+	main = "!git checkout main && git pull"
+	dev = "!git checkout dev && git pull"
