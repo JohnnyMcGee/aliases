@@ -31,6 +31,7 @@
 	rao = remote add origin
 	conn = !git branch -m main && git push -u origin main
 	nb = "!f () { git checkout -b jbm/$1; }; f"
+	hf = "!f () { git checkout -b hf-$1; }; f"
 	wipe = reset --hard HEAD
 	rmc = rm --cached
 	s = status
