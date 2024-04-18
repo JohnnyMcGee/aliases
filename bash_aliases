@@ -202,6 +202,9 @@ alias shtdp="shopify theme dev -s tryearthbreeze"
 alias shgpd="shopify theme pull --store tryearthbreeze.myshopify.com -t us-store-theme/main --only \"config/*\" --only \"templates/*.gem-*\" --only \"assets/gem-*\" && shopify theme push -u"
 alias shgenex="shopify app generate extension"
 alias shad="shopify app deploy"
+# Get the current dev theme and delete it
+alias shdeldt="shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)"
+
 # Shopify Hydrogen commands
 alias h="npx shopify hydrogen"
 alias hep="npx shopify hydrogen env pull -f"
