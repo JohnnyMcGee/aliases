@@ -169,6 +169,12 @@ function netgrep() {
 }
 
 # NPM Shorthand
+alias n="npm"
+alias ni="npm install"
+alias nr="npm run"
+alias nrd="npm run dev"
+alias nrt="npm run test"
+
 # Updating EarthBreeze internal dependencies
 function ebi() {
   npm install "github:Earth-Breeze/${1}"
