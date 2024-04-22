@@ -73,7 +73,6 @@ g() {
 
 alias mybr="git branch | grep -i jbm && git branch -r | grep -i jbm"
 
-unalias copl
 copl() {
   git checkout $1
   git pull
@@ -89,13 +88,11 @@ alias prmd="gh pr merge -rd && git fetch && g sla"
 alias prmm="git checkout dev && gh pr merge -rd && git fetch && git checkout main && git pull && git checkout dev && git rebase main && git push -f && git sla"
 
 # create a PR with an enhancement label, assign to me, and open in browser
-unalias prce
 prce() {
   gh pr create -a @me -l enhancement "$@" && gh pr view -w
 }
 
 # create a PR with a bug label, assign to me, and open in browser
-unalias prcb
 prcb() {
   gh pr create -a @me -l bug "$@" && gh pr view -w
 }
@@ -214,7 +211,7 @@ alias shdeldt="shopify theme delete -f -t $(shopify theme info -d --json | jq .t
 # Shopify Hydrogen commands
 alias h="npx shopify hydrogen"
 alias hep="npx shopify hydrogen env pull -f"
-alias hnitro="npx shopify hydrogen login -s earth-breeze-nitrogen && npx shopify hydrogen link -f --storefront 'Earth Breeze Development' && npx shopify hydrogen env pull -f"
+alias hnitro="npx shopify hydrogen login -s earth-breeze-nitrogen && npx shopify hydrogen link -f --storefront 'Earth Breeze Nitrogen' && npx shopify hydrogen env pull -f"
 alias hhydro="npx shopify hydrogen login -s earth-breeze-hydrogen && npx shopify hydrogen link -f --storefront 'Earth Breeze Hydrogen' && npx shopify hydrogen env pull -f"
 alias hlnk="npx shopify hydrogen link -f"
 
