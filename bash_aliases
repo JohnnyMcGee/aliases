@@ -208,6 +208,11 @@ alias shad="shopify app deploy"
 # Get the current dev theme and delete it
 alias shdeldt="shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)"
 
+# Get all themes prefixed with jbm/ and delete them
+function delprev() {
+  shopify theme list --json | jq '.[] | select(.name | startswith("jbm/")).id' | xargs -I {} shopify theme delete -f -t {}
+}
+
 # Shopify Hydrogen commands
 alias h="npx shopify hydrogen"
 alias hep="npx shopify hydrogen env pull -f"
