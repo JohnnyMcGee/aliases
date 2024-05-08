@@ -208,9 +208,24 @@ alias shad="shopify app deploy"
 # Get the current dev theme and delete it
 alias shdeldt="shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)"
 
-# Get all themes prefixed with jbm/ and delete them
+# Function: delprev
+# Description: Deletes all Shopify themes that start with a specified prefix.
+# If no prefix is provided, it defaults to 'jbm/'.
+#
+# Usage:
+# 1. To delete all themes that start with 'jbm/', simply call the function without any arguments:
+#    delprev
+#
+# 2. To delete themes that start with a custom prefix, provide the prefix as an argument:
+#    delprev 'my-custom-prefix'
+#
+# Example:
+# If you have themes named 'my-custom-prefix/theme1', 'my-custom-prefix/theme2', etc.,
+# you can delete them all by running:
+#    delprev 'my-custom-prefix'
 function delprev() {
-  shopify theme list --json | jq '.[] | select(.name | startswith("jbm/")).id' | xargs -I {} shopify theme delete -f -t {}
+  prefix=${1:-"jbm/"}
+  shopify theme list --json | jq --arg prefix "$prefix" '.[] | select(.name | startswith($prefix)).id' | xargs -I {} shopify theme delete -f -t {}
 }
 
 # Shopify Hydrogen commands
