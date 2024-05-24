@@ -87,6 +87,25 @@ alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
 alias prmm="git checkout dev && gh pr merge -rd && git fetch && git checkout main && git pull && git checkout dev && git rebase main && git push -f && git sla"
 
+function checkout_and_edit_pr() {
+  cd "$CODEPATH/eb/$1"
+  gh co $2
+  code .
+}
+
+function ebprs() {
+  gh pr list \
+    --search 'is:open is:pr user:Earth-Breeze archived:false' \
+    --json headRepository,number,title |
+    jq \
+      -r '.[] | "\(.headRepository.name) \(.number) - \(.title)"' |
+    fzf \
+      --ansi \
+      --preview 'gh pr view --repo "Earth-Breeze/$(echo {1})" {2}' \
+      --bind 'CTRL-o:execute(echo "Opening PR in VS Code" && repo_path="$CODEPATH/eb/$(echo {1})" && cd $repo_path && gh co {2} && code .)' \
+      --bind 'CTRL-w:execute(echo "Opening PR in Browser" && gh pr view --repo "Earth-Breeze/$(echo {1})" --web {2})'
+}
+
 # create a PR with an enhancement label, assign to me, and open in browser
 prce() {
   gh pr create -a @me -l enhancement "$@" && gh pr view -w
