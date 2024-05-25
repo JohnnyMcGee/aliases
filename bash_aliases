@@ -87,23 +87,38 @@ alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
 alias prmm="git checkout dev && gh pr merge -rd && git fetch && git checkout main && git pull && git checkout dev && git rebase main && git push -f && git sla"
 
-function checkout_and_edit_pr() {
-  cd "$CODEPATH/eb/$1"
-  gh co $2
-  code .
-}
-
 function ebprs() {
   gh pr list \
     --search 'is:open is:pr user:Earth-Breeze archived:false' \
-    --json headRepository,number,title |
-    jq \
-      -r '.[] | "\(.headRepository.name) \(.number) - \(.title)"' |
+    --json headRepository,number,author,title \
+    --template '{{tablerow "Repo" "PR" "Author" "Title"}}{{range .}}{{tablerow .headRepository.name .number .author.login .title}}{{end}}{{tablerender}}' |
     fzf \
+      --reverse \
+      --padding 1,0 \
+      --border \
+      --border-label 'Earth Breeze - Open Pull Requests' \
+      --border-label-pos 4 \
       --ansi \
-      --preview 'gh pr view --repo "Earth-Breeze/$(echo {1})" {2}' \
+      --cycle \
+      --header-lines 1 \
+      --preview-window 'right:50%,wrap' \
+      --preview 'gh pr view \
+        --repo "Earth-Breeze/$(echo {1})" {2} \
+        --json "title,state,baseRefName,isDraft,author,number,headRepository,body,createdAt,latestReviews,reviewDecision,comments,mergeable,headRefName" \
+        --template "
+{{autocolor \"green+bu\" .headRepository.name}} #{{.number}}: {{.title}}
+Created {{timeago .createdAt}} by {{if .author.name}}{{.author.name}}{{else}}{{.author.login}}{{end}}
+{{.headRefName}} -> {{.baseRefName}}
+{{if .isDraft}}{{ tablerow \"State:\" \"DRAFT\"}}{{else}}{{ tablerow \"State:\" .state}}{{end}}
+{{ tablerow \"Mergeable:\" .mergeable}}
+{{ tablerow \"Review Decision:\" .reviewDecision}}
+{{ tablerender }}
+
+{{.body}}
+"' \
       --bind 'CTRL-o:execute(echo "Opening PR in VS Code" && repo_path="$CODEPATH/eb/$(echo {1})" && cd $repo_path && gh co {2} && code .)' \
-      --bind 'CTRL-w:execute(echo "Opening PR in Browser" && gh pr view --repo "Earth-Breeze/$(echo {1})" --web {2})'
+      --bind 'CTRL-w:execute(echo "Opening PR in Browser" && gh pr view --repo "Earth-Breeze/$(echo {1})" --web {2})' \
+      --bind 'enter:become(gh pr view --comments --repo "Earth-Breeze/$(echo {1})" {2})'
 }
 
 # create a PR with an enhancement label, assign to me, and open in browser
