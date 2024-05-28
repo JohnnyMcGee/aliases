@@ -94,8 +94,8 @@ alias ebprw=" gh pr list \
 function ebprs() {
   gh pr list \
     --search 'is:open is:pr user:Earth-Breeze archived:false' \
-    --json headRepository,number,author,title \
-    --template '{{tablerow "Repo" "PR" "Author" "Title"}}{{range .}}{{tablerow .headRepository.name .number .author.login .title}}{{end}}{{tablerender}}' |
+    --json headRepository,number,updatedAt,title \
+    --template '{{tablerow "Repo" "PR" "Updated" "Title"}}{{range .}}{{tablerow .headRepository.name .number (timeago .updatedAt) .title}}{{end}}{{tablerender}}' |
     fzf \
       --reverse \
       --padding 1,0 \
@@ -105,19 +105,36 @@ function ebprs() {
       --ansi \
       --cycle \
       --header-lines 1 \
-      --preview-window 'right:50%,wrap' \
+      --preview-window 'right:60%,wrap' \
       --preview 'gh pr view \
         --repo "Earth-Breeze/$(echo {1})" {2} \
-        --json "title,state,baseRefName,isDraft,author,number,headRepository,body,createdAt,latestReviews,reviewDecision,comments,mergeable,headRefName" \
+        --json "title,state,baseRefName,isDraft,author,commits,number,headRepository,body,createdAt,latestReviews,reviewDecision,comments,mergeable,headRefName,updatedAt" \
         --template "
-{{autocolor \"green+bu\" .headRepository.name}} #{{.number}}: {{.title}}
-Created {{timeago .createdAt}} by {{if .author.name}}{{.author.name}}{{else}}{{.author.login}}{{end}}
-{{.headRefName}} -> {{.baseRefName}}
-{{if .isDraft}}{{ tablerow \"State:\" \"DRAFT\"}}{{else}}{{ tablerow \"State:\" .state}}{{end}}
-{{ tablerow \"Mergeable:\" .mergeable}}
-{{ tablerow \"Review Decision:\" .reviewDecision}}
+{{.title}} | {{.headRepository.name}} #{{.number}}
+
+{{.author.login}} wants to merge {{len .commits}} commits into {{.baseRefName}} from {{.headRefName}}.
+
+{{- tablerow \"Updated\" \"Created\" \"Author\" \"State\" \"Mergeable\" \"Review Decision\"}}
+{{tablerow \"-------\" \"-------\" \"------\" \"-----\" \"---------\" \"---------------\"}}
+{{tablerow (timeago .updatedAt) (timeago .createdAt) .author.login .state .mergeable .reviewDecision}}
 {{ tablerender }}
 
+Latest Reviews
+---------------
+{{range .latestReviews}}{{tablerow .author.login .state (timeago .submittedAt)}}{{end}}
+{{- tablerender }}
+
+Comments
+---------
+{{ range .comments -}}
+{{- if eq .authorAssociation \"CONTRIBUTOR\" -}}
+{{tablerow .author.login (timeago .createdAt) (truncate 70 .body)}}
+{{- end -}}
+{{- end -}}
+{{- tablerender }}
+
+Description
+------------
 {{.body}}
 "' \
       --bind 'CTRL-o:execute(echo "Opening PR in VS Code" && repo_path="$CODEPATH/eb/$(echo {1})" && cd $repo_path && gh co {2} && code .)' \
