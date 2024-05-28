@@ -86,6 +86,10 @@ alias action="gh run view -w"
 alias prdev="gh pr create -B dev -l enhancement -a @me -b '' -t"
 alias prmd="gh pr merge -rd && git fetch && g sla"
 alias prmm="git checkout dev && gh pr merge -rd && git fetch && git checkout main && git pull && git checkout dev && git rebase main && git push -f && git sla"
+# Open PRs in browser
+alias ebprw=" gh pr list \
+    --search 'is:open is:pr user:Earth-Breeze archived:false' \
+    --web"
 
 function ebprs() {
   gh pr list \
