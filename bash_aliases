@@ -93,7 +93,7 @@ alias ebprw=" gh pr list \
 
 function ebprs() {
   gh pr list \
-    --search 'is:open is:pr user:Earth-Breeze archived:false' \
+    --search 'is:open is:pr user:Earth-Breeze archived:false sort:updated-desc' \
     --json headRepository,number,updatedAt,title \
     --template '{{tablerow "Repo" "PR" "Updated" "Title"}}{{range .}}{{tablerow .headRepository.name .number (timeago .updatedAt) .title}}{{end}}{{tablerender}}' |
     fzf \
@@ -256,6 +256,7 @@ alias shtc="shopify theme check --fail-level error"
 alias shtd="shopify theme dev"
 alias shtdd="shopify theme dev -s earth-breeze-development"
 alias shtdp="shopify theme dev -s tryearthbreeze"
+alias shtcb="shopify theme info -t $(git branch --show-current)"
 # Pulls gempages assets before deploying to an unpublished theme
 alias shgpd="shopify theme pull --store tryearthbreeze.myshopify.com -t us-store-theme/main --only \"config/*\" --only \"templates/*.gem-*\" --only \"assets/gem-*\" && shopify theme push -u"
 alias shgenex="shopify app generate extension"
