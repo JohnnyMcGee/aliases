@@ -94,8 +94,8 @@ alias ebprw=" gh pr list \
 function ebprs() {
   gh pr list \
     --search 'is:open is:pr user:Earth-Breeze archived:false sort:updated-desc' \
-    --json headRepository,number,updatedAt,title \
-    --template '{{tablerow "Repo" "PR" "Updated" "Title"}}{{range .}}{{tablerow .headRepository.name .number (timeago .updatedAt) .title}}{{end}}{{tablerender}}' |
+    --json headRepository,number,updatedAt,author,title \
+    --template '{{tablerow "PR" "Title" "Updated" "Author" "Repo"}}{{range .}}{{tablerow .number (truncate 30 .title) (truncate 10 (timeago .updatedAt)) (truncate 10 .author.login) .headRepository.name }}{{end}}{{tablerender}}' |
     fzf \
       --reverse \
       --padding 1,0 \
@@ -105,9 +105,9 @@ function ebprs() {
       --ansi \
       --cycle \
       --header-lines 1 \
-      --preview-window 'right:60%,wrap' \
+      --preview-window 'right:55%,wrap' \
       --preview 'gh pr view \
-        --repo "Earth-Breeze/$(echo {1})" {2} \
+        --repo "Earth-Breeze/$(echo {-1})" {1} \
         --json "title,state,baseRefName,isDraft,author,commits,number,headRepository,body,createdAt,latestReviews,reviewDecision,comments,mergeable,headRefName,updatedAt" \
         --template "
 {{.title}} | {{.headRepository.name}} #{{.number}}
@@ -137,10 +137,10 @@ Description
 ------------
 {{.body}}
 "' \
-      --bind 'CTRL-o:execute(echo "Opening PR in VS Code" && repo_path="$CODEPATH/eb/$(echo {1})" && cd $repo_path && gh co {2} && code .)' \
-      --bind 'CTRL-w:execute(echo "Opening PR in Browser" && gh pr view --repo "Earth-Breeze/$(echo {1})" --web {2})' \
-      --bind 'enter:become(gh pr view --comments --repo "Earth-Breeze/$(echo {1})" {2})' \
-      --bind 'ctrl-r:reload(gh pr list --search "is:open is:pr user:Earth-Breeze archived:false sort:updated-desc" --json headRepository,number,updatedAt,title --template "{{tablerow \"Repo\" \"PR\" \"Updated\" \"Title\"}}{{range .}}{{tablerow .headRepository.name .number (timeago .updatedAt) .title}}{{end}}{{tablerender}}")'
+      --bind 'CTRL-o:execute(echo "Opening PR in VS Code" && repo_path="$CODEPATH/eb/$(echo {-1})" && cd $repo_path && gh co {1} && code .)' \
+      --bind 'CTRL-w:execute(echo "Opening PR in Browser" && gh pr view --repo "Earth-Breeze/$(echo {-1})" --web {1})' \
+      --bind 'enter:become(gh pr view --comments --repo "Earth-Breeze/$(echo {-1})" {1})' \
+      --bind 'ctrl-r:reload(gh pr list --search "is:open is:pr user:Earth-Breeze archived:false sort:updated-desc" --json headRepository,number,updatedAt,author,title --template "{{tablerow \"PR\" \"Title\" \"Updated\" \"Author\" \"Repo\" }}{{range .}}{{tablerow .number (truncate 30 .title) (truncate 10 (timeago .updatedAt)) (truncate 10 .author.login) .headRepository.name}}{{end}}{{tablerender}}")'
 }
 
 # create a PR with an enhancement label, assign to me, and open in browser
