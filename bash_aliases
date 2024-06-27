@@ -153,6 +153,11 @@ prcb() {
   gh pr create -a @me -l bug "$@" && gh pr view -w
 }
 
+# create a PR with a release label, assign to me, and open in browser
+prcr() {
+  gh pr create -a @me -l release "$@" && gh pr view -w
+}
+
 function pdprmd() {
   git psuoc
   gh pr create -B dev -a @me -b '' -t "$1"
