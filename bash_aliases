@@ -268,7 +268,7 @@ alias shgpd="shopify theme pull --store tryearthbreeze.myshopify.com -t us-store
 alias shgenex="shopify app generate extension"
 alias shad="shopify app deploy"
 # Get the current dev theme and delete it
-alias shdeldt="shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)"
+alias shdeldt='shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)'
 
 # Function: delprev
 # Description: Deletes all Shopify themes that start with a specified prefix.
