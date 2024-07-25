@@ -269,6 +269,7 @@ alias shgenex="shopify app generate extension"
 alias shad="shopify app deploy"
 # Get the current dev theme and delete it
 alias shdeldt='shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)'
+alias stic='shopify theme info -t $(git branch --show-current)'
 
 # Function: delprev
 # Description: Deletes all Shopify themes that start with a specified prefix.
