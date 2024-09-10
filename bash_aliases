@@ -320,6 +320,7 @@ export TEB="tryearthbreeze"
 
 # Projects
 alias qcf="cd $CODEPATH/fss/quantum_cube_flutter && code ."
+alias qct="cd $CODEPATH/fss/quantum-cube-timer && code ."
 alias al="cd $CODEPATH/aliases && code ."
 alias st="cd $CODEPATH/eb/shopify-theme && code ."
 alias std="cd $CODEPATH/eb/shopify-theme && code . && npm run dev"
@@ -332,3 +333,5 @@ alias cu="cd $CODEPATH/eb/checkout-ui && code ."
 alias cud="cd $CODEPATH/eb/checkout-ui && code . && npm run dev"
 alias rty="cd $CODEPATH/eb/recharge-thankyou && code ."
 alias sha="cd $CODEPATH/eb/shared && code ."
+alias pbw="cd $CODEPATH/pb/website && code ."
+alias pbwd="cd $CODEPATH/pb/website && code . && npm run dev"
