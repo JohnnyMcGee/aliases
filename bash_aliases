@@ -25,20 +25,6 @@ alias clist="conda list"
 alias cc="conda create -n"
 alias cr="conda env remove -n"
 
-# Docker shorthand
-alias sd="sudo docker"
-alias sdi="sudo docker image"
-alias sdis="sudo docker images"
-alias sdc="sudo docker container"
-alias sdbld="sudo docker build -t"
-alias sdrun="sudo docker run -t -d"
-alias sdex="sudo docker exec -it"
-sdpsh() { sudo docker push "johnnymcgee/$1"; }
-alias sdpl="sudo docker pull"
-sdplj() { sudo docker pull "johnnymcgee/$1"; }
-alias sdcomp="sudo docker compose"
-alias sdclear="sudo docker container rm -f $(sudo docker container ls -aq) && sudo docker image rm -f $(sudo docker image ls -q)"
-
 # Flutter tool
 alias fclnup="flutter clean && flutter pub get && flutter pub upgrade"
 alias frun="flutter run -v"
@@ -47,17 +33,6 @@ alias fbr-watch="flutter pub run build_runner watch"
 alias fbr-build="flutter pub run build_runner build"
 
 alias fa-bb="adb shell setprop debug.firebase.analytics.app com.juliankohann.bubblebrawl"
-
-# Google Drive Shorthand
-alias pg="sudo docker exec -it search pirate-get"
-alias rt="sudo docker exec -it download rtorrent -d /root/files"
-alias gd="sudo docker exec -it upload gdrive"
-alias torrents="sudo docker exec -it download ls -Alh"
-alias files="sudo docker exec -it upload ls -Alh"
-alias files-up="sudo docker exec -it upload ./upload.sh"
-alias files-cl="sudo docker exec -it upload ./clear.sh"
-alias torrents-down="sudo docker exec -it download ./download.sh"
-alias torrents-cl="sudo docker exec -it download ./clear.sh"
 
 # Git shorthand
 # No arguments: `git status`
