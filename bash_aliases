@@ -161,6 +161,8 @@ alias ghil="gh issue list"
 alias ghiv="gh issue view"
 alias ghprlsm="gh pr list -s merged"
 alias ghprv="gh pr view -w"
+alias ghcs="gh copilot suggest"
+alias ghce="gh copilot explain"
 
 # VirtualBoxManager
 vm() {
