@@ -40,4 +40,4 @@
 	sm = submodule
 	main = "!git checkout main && git pull"
 	dev = "!git checkout dev && git pull"
-    brf = "!git branch | fzf | xargs -I {} git checkout {}"
+    brf = "!git branch | fzf --cycle | xargs -I {} git checkout {}"
