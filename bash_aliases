@@ -34,6 +34,16 @@ alias fbr-build="flutter pub run build_runner build"
 
 alias fa-bb="adb shell setprop debug.firebase.analytics.app com.juliankohann.bubblebrawl"
 
+# Push current pubspec version to github and tag it to trigger a TestFlight build on codemagic
+# This is for quantum cube, but could be reused with other dart projects, I suppose
+tfpush() {
+  VERSION="v$(cider version)"
+  git commit -a -m "$VERSION"
+  git tag "$VERSION"
+  git push
+  git push origin "$VERSION"
+}
+
 # Git shorthand
 # No arguments: `git status`
 # With arguments: acts like `git`
@@ -129,8 +139,16 @@ prcb() {
 }
 
 # create a PR with a release label, assign to me, and open in browser
+# PR body is pre-populated with a list of PRs merged into dev since the last release
 prcr() {
-  gh pr create -a @me -l release "$@" && gh pr view -w
+  git checkout main
+  git pull
+  git checkout dev
+  git pull
+  PR_LIST=$(git log --oneline --merges main..dev | grep -o '#[0-9]\+ ' | sed 's/^/- /')
+  BODY="# In This Release\\n$PR_LIST\\n\\n# Preview Link\\ncoming soon"
+  echo $BODY
+  gh pr create -a @me -l release -b $BODY "$@" && gh pr view -w
 }
 
 function pdprmd() {
@@ -209,6 +227,7 @@ alias ni="npm install"
 alias nr="npm run"
 alias nrd="npm run dev"
 alias nrt="npm run test"
+alias nrck="npm run check"
 
 # Updating EarthBreeze internal dependencies
 function ebi() {
@@ -268,6 +287,15 @@ alias theme-delete="shopify theme list --json | jq '.[] | .name' | fzf -m --layo
 function delprev() {
   prefix=${1:-"jbm/"}
   shopify theme list --json | jq --arg prefix "$prefix" '.[] | select(.name | startswith($prefix)).id' | xargs -I {} shopify theme delete -f -t {}
+}
+
+function pull-clean() {
+  echo "Pulling theme with args: $@\n"
+  shopify theme pull $@
+  echo "Removing build files...\n"
+  ls **/*replo* assets/*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*.*
+  rm **/*replo* assets/*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*.*
+  echo "Done.\n"
 }
 
 # Shopify Hydrogen commands
