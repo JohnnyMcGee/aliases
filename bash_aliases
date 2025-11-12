@@ -268,6 +268,7 @@ alias shad="shopify app deploy"
 alias shdeldt='shopify theme delete -f -t $(shopify theme info -d --json | jq .theme.id)'
 alias stic='shopify theme info -t $(git branch --show-current)'
 alias theme-delete="shopify theme list --json | jq '.[] | .name' | fzf -m --layout reverse | xargs -n 1 -P 8 -I {} shopify theme delete -f -t {}"
+alias release-preview="shopify theme info -j -t dev -s earth-breeze-hydrogen | jq -r '.theme.preview_url'"
 
 # Function: delprev
 # Description: Deletes all Shopify themes that start with a specified prefix.
@@ -321,9 +322,9 @@ alias fu="firebase use"
 alias ffcg="firebase functions:config:get"
 
 # Global Variables
-export EBD="earth-breeze-development"
-export EBH="earth-breeze-hydrogen"
-export TEB="tryearthbreeze"
+export HYDRO="earth-breeze-hydrogen"
+export NITRO="earth-breeze-nitrogen"
+export PROD=$HYDRO
 
 # Projects
 alias qcf="cd $CODEPATH/fss/quantum_cube_flutter && code ."
@@ -344,3 +345,4 @@ alias sha="cd $CODEPATH/eb/shared && code ."
 alias pbw="cd $CODEPATH/pb/website && code ."
 alias pbwd="cd $CODEPATH/pb/website && code . && npm run dev"
 alias pbp="gh project view --owner psychobummer 4 -w"
+
