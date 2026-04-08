@@ -222,7 +222,6 @@ function netgrep() {
 }
 
 # NPM Shorthand
-alias n="npm"
 alias ni="npm install"
 alias nr="npm run"
 alias nrd="npm run dev"
@@ -346,3 +345,9 @@ alias pbw="cd $CODEPATH/pb/website && code ."
 alias pbwd="cd $CODEPATH/pb/website && code . && npm run dev"
 alias pbp="gh project view --owner psychobummer 4 -w"
 
+alias n="nvim"
+
+alias glnt="golangci-lint run"
+alias j="jobs"
+
+alias tree='find . -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"'
