@@ -41,3 +41,5 @@
 	main = "!git checkout main && git pull"
 	dev = "!git checkout dev && git pull"
     brf = "!git branch | fzf --cycle | xargs -I {} git checkout {}"
+  wta = worktree add
+  wtr = worktree remove

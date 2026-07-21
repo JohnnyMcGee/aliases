@@ -76,6 +76,33 @@ alias ebprw=" gh pr list \
     --search 'is:open is:pr user:Earth-Breeze archived:false' \
     --web"
 
+pr-overview() {
+  local cutoff
+  # macOS date first, GNU fallback
+  cutoff=$(date -u -v-1m +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '1 month ago' +%Y-%m-%dT%H:%M:%SZ)
+  gh pr list --state open --limit 200 \
+    --json number,title,url,author,baseRefName,headRefName,isDraft,updatedAt,reviewDecision |
+  jq -r --arg cutoff "$cutoff" '
+    map(select(
+      (.baseRefName | IN("qa","staging","prod"))
+      and (.isDraft | not)
+      and (.updatedAt >= $cutoff)
+      and ((.reviewDecision // "") | IN("APPROVED","CHANGES_REQUESTED") | not)
+    ))
+    | map(. + {feature: (
+        (.headRefName | ascii_downcase | capture("(?<t>eng-[0-9]+)").t? )
+        // (.headRefName | split("/") | if length > 1 then .[0] else "misc" end)
+      )})
+    | group_by(.author.login)[]
+    | "\u001b[1;32m\(.[0].author.login)\u001b[0m (\(length) PR\(if length > 1 then "s" else "" end))",
+      (group_by(.feature)[]
+        | "  \u001b[36m\(.[0].feature)\u001b[0m",
+          (.[] | "    #\(.number) [\(.baseRefName)] \u001b]8;;\(.url)\u0007\(.title)\u001b]8;;\u0007 — \(.updatedAt[:10])")
+      ),
+      ""
+  '
+}
+
 function ebprs() {
   gh pr list \
     --search 'is:open is:pr user:Earth-Breeze archived:false sort:updated-desc' \
@@ -93,7 +120,7 @@ function ebprs() {
       --preview-window 'right:55%,wrap' \
       --preview 'gh pr view \
         --repo "Earth-Breeze/$(echo {-1})" {1} \
-        --json "title,state,baseRefName,isDraft,author,commits,number,headRepository,body,createdAt,latestReviews,reviewDecision,comments,mergeable,headRefName,updatedAt" \
+        --json "title,state,baseRefName,isDraft,author,commits,number,headRepository,body,createdAt,reviewDecision,comments,mergeable,headRefName,updatedAt" \
         --template "
 {{.title}} | {{.headRepository.name}} #{{.number}}
 
@@ -351,3 +378,5 @@ alias glnt="golangci-lint run"
 alias j="jobs"
 
 alias tree='find . -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"'
+
+alias rpr='gh pr list --state merged --search "merged:>=$(git log -1 --format=%aI $(git describe --tags --abbrev=0))"'
